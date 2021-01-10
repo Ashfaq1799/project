@@ -14,6 +14,7 @@ export class ScheduleComponent implements OnInit {
   check:any;
   msg:any;
   schedule:Schedule;
+  heroForm:NgForm;
 
   constructor(private scheduleservice:ScheduleService) {
     this.schedule=new Schedule();
@@ -21,12 +22,18 @@ export class ScheduleComponent implements OnInit {
     this.scheduleservice.getflightidfromapi().subscribe((u:any)=>{this.check=u;console.log(u)}
     );
    }
-   Add(schedule:Schedule)
-   {
-     console.log(schedule);
-     this.scheduleservice.addScheduleUsingApi(schedule).subscribe(data=>console.log(data),err=>err.error.Message);
-     this.msg="Values added";
+  //  Add(schedule:Schedule)
+  //  {
+  //    console.log(schedule);
+  //    this.scheduleservice.addScheduleUsingApi(schedule).subscribe(data=>console.log(data),err=>err.error.Message);
+  //    this.msg="Values added";
      
+  //  }
+  InsertSchedule()
+  {   
+    this.scheduleservice.addScheduleUsingApi(this.schedule).subscribe(data=>console.log(data),err=>err.error.Message);
+    this.msg="Values added";
+    this.heroForm.reset();
    }
   ngOnInit(): void {
   }

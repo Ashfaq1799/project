@@ -25,8 +25,12 @@ import { SchedulelistComponent } from './schedulelist/schedulelist.component';
 import { UpdatescheduleComponent } from './updateschedule/updateschedule.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
-import { FlightsearchComponent } from './flightsearch/flightsearch.component';
-
+import { SearchFlightComponent } from './flightsearch/flightsearch.component';
+import { SeatLayoutComponent } from './seatlayout/seatlayout.component';
+import { SeatLayoutService } from "./services/seatLayout.service";
+import { FlightsearchService } from "./services/flightsearch.service";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 
 @NgModule({
@@ -46,7 +50,8 @@ import { FlightsearchComponent } from './flightsearch/flightsearch.component';
     UpdatescheduleComponent,
     AdminComponent,
     AdminloginComponent,
-    FlightsearchComponent
+    SearchFlightComponent,
+    SeatLayoutComponent
   ],
   imports: [
     CommonModule,
@@ -54,9 +59,11 @@ import { FlightsearchComponent } from './flightsearch/flightsearch.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    TooltipModule.forRoot()
   ],
-  providers: [userService,EncrDecrServiceService,FlightService],
+  providers: [userService,EncrDecrServiceService,FlightService,SeatLayoutService,FlightsearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

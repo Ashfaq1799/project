@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthenticationService {
-isAuthenticated=false;
+isAuthenticated:boolean=false;
 username:string;
 admin:string;
 isadminauthenticated=false;

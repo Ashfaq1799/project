@@ -8,13 +8,14 @@ import { AuthenticationService } from '../services/authentication/authentication
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-
+isloggedin:boolean=false;
   constructor(private AuthenticationService:AuthenticationService){
-
+    
   }
   ngOnInit(): void {
+    this.isloggedin=this.AuthenticationService.isAuthenticated;
   }
-
+ 
   logout(){
     this.AuthenticationService.logout();
   }
