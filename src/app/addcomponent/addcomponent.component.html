@@ -1,5 +1,6 @@
 <button class="open-button" (click)="openForm()">Add passenger<i class="fa fa-user-plus" aria-hidden="true"></i></button>
   <p>Click to refresh<button (click)="reload()"><i class="fa fa-refresh" aria-hidden="true"></i></button></p>
+  <button (click)="proceed()">proceed</button>
     <!-- <div *ngIf=msg class="error">
      <div class="alert" id="err">
       <button class="closebtn" onclick="exit()">close</button> 
@@ -54,6 +55,7 @@
             <p>{{p.age}}</p>
          </div>
         <button (click)="remove(p.passenger_id)" class="btn btn-primary">Remove</button>
+        <button (click)="select(p.passenger_id)" class="btn btn-primary">Select</button>
       </div>
     </details>
   </div>

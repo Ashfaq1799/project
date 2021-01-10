@@ -1,0 +1,38 @@
+<h3>Available flights</h3>
+
+         <div *ngFor="let f of result_flights"> 
+            <div class="container">
+      <div class="card" style="width:400px;margin-bottom:20px;margin-top:50px">
+            <div class="card-body" style="background-color:#EDf5e1;">
+                  <div class="card-text">
+                        Flight ID:{{f.flight_id}}<br>
+                        Flight Name:{{f.flight_name}}<br>
+                        Departure Time:{{f.departure_time}}
+                        <br>
+                        Arrival Time:{{f.arrival_time}}
+                        <br>
+                        Duration:{{f.duration}}
+                        <br>
+          <!-- Economy Class Fare:{{f.economy_class_fare}}
+          <br>
+          Business Class Fare:{{f.business_class_fare}}
+          <br>
+          Premium Class Fare:{{f.premium_class_fare}}
+          <br>
+          First Class Fare:{{f.first_class_fare}}
+          <br>
+          Seats in Economy Class:{{f.avail_economy_class}}
+          <br>
+          Seats in Business Class:{{f.avail_business_class}}
+          <br>
+          Seats in Premium Class:{{f.avail_premium_class}}
+          <br>
+          Seats in First Class:{{f.avail_first_class}}
+          <br> -->
+      <a routerLink="/seatlayout"><button (click)=redirect(f.schedule_id)>book</button></a>
+      </div> 
+          </div>
+      </div>
+    </div>
+</div>
+  

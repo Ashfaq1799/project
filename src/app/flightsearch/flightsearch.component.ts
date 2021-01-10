@@ -17,6 +17,7 @@ export class SearchFlightComponent implements OnInit
   flight:Flight;
   searchForm:FormGroup;
   msg:any;
+  flights:any;
   classlist:string[];
   citylist:string[];
 
@@ -29,7 +30,7 @@ export class SearchFlightComponent implements OnInit
    constructor(private searchService:FlightsearchService)
    {
      this.flight=new Flight();
-     this.citylist=["Chennai","Coimbatore","Hyderabad","Pune","Mumbai","Madurai","Delhi","Kolkata","Ahmedabad","Kochi","Banglore","Chandigarh","Mysore"];
+     this.citylist=["Chennai","Coimbatore","Hyderabad","Pune","Mumbai","Madurai","Delhi","Kolkata","Ahmedabad","Kochi","Bangalore","Chandigarh","Mysore","Goa"];
      this.classlist=["Economy","Premium","First","Business"];
      this.searchForm=new FormGroup({
       travel_date:new FormControl('',Validators.required),
@@ -50,14 +51,16 @@ export class SearchFlightComponent implements OnInit
    this.flight.source_destination=this.searchForm.get('source_destination')?.value;
    this.flight.target_destination=this.searchForm.get("target_destination")?.value;
    this.flight.travellers=this.searchForm.get("travellers")?.value;
-
+   sessionStorage.setItem("count",this.flight.travellers.toString());
+   sessionStorage.setItem("travel_date",this.flight.travel_date);
+   console.log(this.flight.travel_date);
    
-   this.searchService.getAllFlightsFromApi(this.flight.travel_date,this.flight.source_destination,this.flight.target_destination,this.flight.travellers).subscribe(data=>console.log
-            (data),err=>err.error.Message);
+   this.searchService.getresultFlightsFromApi(this.flight.travel_date,this.flight.source_destination,this.flight.target_destination,this.flight.travellers).subscribe(
+     data=>{this.flights=data,console.log(this.flights)},err=>err.error.Message);
    
-            this.msg="flights fetched";
+   this.msg="flights fetched";
 }
-  
+// get travellers(){return this.searchForm.get('travellers')}
 
 ngOnInit():void{  }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SeatLayoutService } from '../services/seatLayout.service';
 
 @Component({
@@ -27,11 +28,11 @@ export class SeatLayoutComponent implements OnInit {
     eventId : 0
   };
 
-  s:number=10029;
+  s:number=parseInt(sessionStorage.getItem("schedule_id"));
   seat:any;
   msg:any;
   title = 'seat-chart-generator';
-  constructor(public sl:SeatLayoutService) {
+  constructor(public sl:SeatLayoutService,private router:Router) {
     
    }
 
@@ -135,7 +136,6 @@ export class SeatLayoutComponent implements OnInit {
           {
             "layout":""
           }
-         
         ]
       },
       {
@@ -181,7 +181,6 @@ export class SeatLayoutComponent implements OnInit {
             "seat_label": "D",
             "layout": "ggg__ggg"
           }
-          
         ]
       }
     ]    
@@ -312,14 +311,17 @@ export class SeatLayoutComponent implements OnInit {
 
   public selectSeat( seatObject : any )
   {
-    if(this.cart.selectedSeats.length<4){
-    
       if(seatObject.status == "available")
       {
+        if(this.cart.selectedSeats.length<parseInt(sessionStorage.getItem("count"))){
         seatObject.status = "booked";
         this.cart.selectedSeats.push(seatObject.seatLabel);
         this.cart.seatstoStore.push(seatObject.key);
         this.cart.totalamount += seatObject.price;
+        }
+        else{
+          alert("Maximum seat limit reached");
+        }
       }
       else if( seatObject.status = "booked" )
       {
@@ -333,10 +335,6 @@ export class SeatLayoutComponent implements OnInit {
         }
       }
     }
-    else{
-      alert("Maximum seat limit reached");
-    }
-  }
 
   public blockSeats(seatsToBlock: string) {
     if (seatsToBlock != "") {
@@ -381,6 +379,8 @@ export class SeatLayoutComponent implements OnInit {
     }
   }
 processBooking(){
-  console.log("works");
+  sessionStorage.setItem("seatnos", JSON.stringify(this.cart.selectedSeats));
+  sessionStorage.setItem("cost",this.cart.totalamount.toString());
+  this.router.navigate(['Add']);
 }
 }

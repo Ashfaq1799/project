@@ -14,6 +14,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { SchedulelistComponent } from './schedulelist/schedulelist.component';
 import { SeatLayoutComponent } from './seatlayout/seatlayout.component';
+import { TicketComponent } from './ticket/ticket.component';
+import { TicketpdfComponent } from './ticketpdf/ticketpdf.component';
 import { UpdateflightComponent } from './updateflight/updateflight.component';
 import { UpdatescheduleComponent } from './updateschedule/updateschedule.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
@@ -27,6 +29,8 @@ const routes: Routes = [
   {path:"Add",component:AddcomponentComponent,canActivate:[AuthguardGuard]},
   {path:"Checkout",component:CheckoutComponent},
   {path:"seatlayout",component:SeatLayoutComponent},
+  {path:"ticketgeneration",component:TicketComponent},
+  {path:"pdfgeneration",component:TicketpdfComponent},
   // {path:"flight",component:UpdateflightComponent},
   // {path:"getflight",component:GetflightsComponent},
   // {path:"add",component:AddflightComponent},

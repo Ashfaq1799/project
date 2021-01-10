@@ -5,6 +5,7 @@ import { passenger } from '../models/passenger.model';
 import { userService } from '../services/user.service';
 import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addcomponent',
@@ -18,8 +19,10 @@ export class AddcomponentComponent implements OnInit {
   passengers:any;
   number:any;
   index:any;
-  constructor(private userService:userService) { 
+  selectedpassengers:number[]= [];
+  constructor(private userService:userService,private route:Router) { 
     this.passenger=new passenger();
+
   }
 
   ngOnInit(): void {
@@ -65,5 +68,19 @@ export class AddcomponentComponent implements OnInit {
   reload(){
     console.log("inside reload");
     this.userService.getpassengersusingapi(sessionStorage.getItem("username")).subscribe(data=>{this.passengers=data});
+  }
+  select(num:number){
+    // this.selectedpassengers.push(num);
+    if((parseInt(sessionStorage.getItem("count"))>this.selectedpassengers.length)){
+        this.selectedpassengers.push(num);
+    }
+    else{
+      alert("number of passengers exceeds the selected seats")
+    }
+  }
+  proceed(){
+    sessionStorage.setItem("passengers", JSON.stringify(this.selectedpassengers));
+    this.route.navigate(['Checkout'])
+    console.log(this.selectedpassengers);
   }
 }

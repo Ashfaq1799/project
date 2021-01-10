@@ -1,0 +1,22 @@
+export class Pdfticket 
+{
+    flight_name:string;
+    source_destination:string;
+    target_destination:string;
+    arrival_time:string;
+    departure_time:string;
+    seat_no:number;
+    passenger_name:string;
+    constructor(flight_name:string="",source_destination:string="",
+    target_destination:string="",arrival_time:string="",departure_time:string="",
+    seat_no:number=0,passenger_name:string="")
+    {
+        this.flight_name=flight_name;
+        this.source_destination=source_destination;
+        this.target_destination=target_destination;
+        this.arrival_time=arrival_time;
+        this.departure_time=departure_time;
+        this.seat_no=seat_no;
+        this.passenger_name=passenger_name;
+    }
+}

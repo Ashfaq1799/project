@@ -1,3 +1,4 @@
+
 <div class="container">
    
   <form [formGroup]="searchForm"  (ngSubmit)="onSubmit()">
@@ -38,9 +39,10 @@
      <p> 
        <input type="submit" value="Search"> 
      </p>
-    
   </form>
 </div>
+<app-displayflights [result_flights]="flights"></app-displayflights>
+
 
 
 

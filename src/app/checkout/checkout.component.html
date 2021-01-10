@@ -35,7 +35,7 @@
                 <div class="col-50">
                   <label for="cvv">CVV</label>
                   <input type="text" id="cvv" name="cvv" placeholder="Enter cvv" formControlName="cvv">
-                  <span class="error" *ngIf="cvv.invalid && cvv.touched">firstname is invalid</span>
+                  <span class="error" *ngIf="cvv.invalid && cvv.touched">cvv is invalid</span>
   
                 </div>
               </div>
@@ -50,13 +50,14 @@
     </div>
     <div class="col-50">
       <div class="container">
-        <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-        <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-        <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-        <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-        <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+        <h4>Passengers<span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>{{count}}</b></span></h4>
+        <div>
+        <p>username</p><span class="price">{{username}}</span>
+        <p>travel_date</p><span class="price">{{travel_date}}</span>
+        <p>selected seat_nos</p><span class="price">{{seat_nos}}</span>
+        </div>
         <hr>
-        <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+        <p>Total <span class="price" style="color:black"><b>{{totalcost}}</b></span></p>
       </div>
     </div>
   </div>

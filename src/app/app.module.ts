@@ -31,6 +31,12 @@ import { SeatLayoutService } from "./services/seatLayout.service";
 import { FlightsearchService } from "./services/flightsearch.service";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { DisplayflightsComponent } from './displayflights/displayflights.component';
+import { PassengerService } from "./services/passenger.service";
+import { TicketComponent } from './ticket/ticket.component';
+import { BookingService } from "./services/booking.service";
+import { TicketService } from "./services/ticket.service";
+import { TicketpdfComponent } from './ticketpdf/ticketpdf.component';
 
 
 @NgModule({
@@ -51,7 +57,10 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     AdminComponent,
     AdminloginComponent,
     SearchFlightComponent,
-    SeatLayoutComponent
+    SeatLayoutComponent,
+    DisplayflightsComponent,
+    TicketComponent,
+    TicketpdfComponent
   ],
   imports: [
     CommonModule,
@@ -63,7 +72,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     NgbModule,
     TooltipModule.forRoot()
   ],
-  providers: [userService,EncrDecrServiceService,FlightService,SeatLayoutService,FlightsearchService],
+  providers: [userService,EncrDecrServiceService,FlightService,SeatLayoutService,FlightsearchService,PassengerService,BookingService,
+  TicketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

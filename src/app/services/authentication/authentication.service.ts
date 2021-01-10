@@ -29,7 +29,17 @@ isadminauthenticated=false;
     this.isAuthenticated=false;
     this.username=null;
     this.router.navigate(['Login']);
+    // sessionStorage.empty();
     sessionStorage.removeItem("username");
+    sessionStorage.removeItem("count");
+    sessionStorage.removeItem("schedule_id");
+    sessionStorage.removeItem("travel_date");
+    sessionStorage.removeItem("passengers");
+    sessionStorage.removeItem("seatnos");
+    sessionStorage.removeItem("booking_id");
+    sessionStorage.removeItem("cost");
+    sessionStorage.removeItem("ticket_id");
+    // sessionStorage.removeItem("ticket_id");
   }
   adminlogout(){
     this.isadminauthenticated=false;
