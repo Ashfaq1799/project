@@ -1,0 +1,78 @@
+
+<div class="container">
+    <div class="row">
+        <div class="form-bg">
+            <form #searchflight="ngForm" name="searchflight" (ngSubmit)="searchflight.value">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+    
+    <h1 class="panel-title">SEARCH FLIGHT</h1>
+</div>
+ <div class="panel-body">
+
+    <!-- <input type="text"  placeholder="Enter name" id="name" name="name" ngModel #name="ngModel" required/> -->
+
+<div class="form-group">
+    <label for="from">From</label>
+    <select id="from" name="from" class="form-control" [(ngModel)]="flightsearch.source_destination" #from="ngModel" required>
+      <option *ngFor ="let c of citylist" [value]="c.id">{{c.name}}</option>
+    </select>
+    <div [hidden]="from.valid || from.untouched"
+             class="alert alert-danger">
+          source destination is required
+        </div>
+      
+</div>
+
+  <div class="form-group">
+    <label for="to">To</label>
+    <select id="to" name="to" class="form-control" [(ngModel)]="flightsearch.target_destination" #to="ngModel" required>
+      <option *ngFor ="let c of citylist" [value]="c.id">{{c.name}}</option>
+    </select>
+    <div [hidden]="to.valid || to.untouched"
+    class="alert alert-danger">
+         target_destination is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="traveldate">Travel Date</label>
+    <input type="date" name="tdate" class="form-control" placeholder="enter your travel date" [(ngModel)]="flight.travel_date" #tdate="ngModel" required>
+    <div [hidden]="tdate.valid || tdate.untouched"
+             class="alert alert-danger">
+          Date is required
+        </div>
+  </div>
+
+  <div class="form-group">
+    <label for="travellers">No of Travellers</label>
+    <input type="number" name="tno" class="form-control" placeholder="enter the no of travellers" [(ngModel)]="flight.travellers" #tno="ngModel" required>
+    <div [hidden]="tno.valid || tno.untouched"
+             class="alert alert-danger">
+          required
+        </div>
+    
+  </div>
+
+  <div class="form-group">
+    <label for="class">Class</label>
+    <select id="class" name="fclass" class="form-control" [(ngModel)]="flight.flight_class" #fclass="ngModel">
+        <option *ngFor ="let cl of classlist" [value]="cl.id">{{cl.name}}</option>
+        
+      </select>
+      <div [hidden]="fclass.valid || fclass.untouched"
+             class="alert alert-danger">
+          required
+        </div>
+  </div>
+
+
+</div>
+  <div class="panel-footer">
+    <button  class="btn btn-success" type="submit"[disabled] ="!searchflight.form.valid">Search Flight</button>
+  </div>
+
+  <div *ngIf="msg">
+    {{msg}}
+  </div>
+  

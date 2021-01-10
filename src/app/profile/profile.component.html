@@ -1,0 +1,29 @@
+<p>profile works!</p>
+<div>
+    <label>
+        Username
+    </label>
+    <input type="text" [(ngModel)]="user.username" readonly>
+    <br>
+    <label>
+        Firstname
+    </label>
+    <input type="text" [(ngModel)]="user.firstname" readonly>
+    <br>
+    <label>
+        Lastname
+    </label>
+    <input type="text" [(ngModel)]="user.lastname">
+    <br>
+    <label>
+        Dob
+    </label>
+    <input type="text" [(ngModel)]="user.dob" readonly>
+    <br>
+    <label>
+       Phone
+    </label>
+    <input type="text" [(ngModel)]="user.phone">
+    <br>
+    <button (click)="update()">update</button>
+</div>
