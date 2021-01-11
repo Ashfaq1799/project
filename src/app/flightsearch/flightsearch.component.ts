@@ -5,6 +5,7 @@ import { Flight } from '../models/flightsearch.model.';
 
 
 import {FlightsearchService} from '../services/flightsearch.service';
+import { ReturnflightsService } from '../services/returnflights.service';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class SearchFlightComponent implements OnInit
   searchForm:FormGroup;
   msg:any;
   flights:any;
+  returnflights:any;
   classlist:string[];
   citylist:string[];
 
@@ -27,7 +29,7 @@ export class SearchFlightComponent implements OnInit
   //    console.log(searchflight.value);
   //  }
 
-   constructor(private searchService:FlightsearchService)
+   constructor(private searchService:FlightsearchService,private returnflightsservice:ReturnflightsService)
    {
      this.flight=new Flight();
      this.citylist=["Chennai","Coimbatore","Hyderabad","Pune","Mumbai","Madurai","Delhi","Kolkata","Ahmedabad","Kochi","Bangalore","Chandigarh","Mysore","Goa"];
@@ -37,7 +39,8 @@ export class SearchFlightComponent implements OnInit
       source_destination:new FormControl('',Validators.required),
       target_destination:new FormControl('',Validators.required),
       travellers:new FormControl('',Validators.required),
-      flight_class:new FormControl('',Validators.required)
+      flight_class:new FormControl('',Validators.required),
+      return_date:new FormControl('',Validators.required)
     })
    }
 
@@ -48,17 +51,23 @@ export class SearchFlightComponent implements OnInit
    console.log(this.searchForm.value);
    console.log("fired");
    this.flight.travel_date=this.searchForm.get('travel_date')?.value;
+   this.flight.return_date=this.searchForm.get('return_date')?.value;
    this.flight.source_destination=this.searchForm.get('source_destination')?.value;
    this.flight.target_destination=this.searchForm.get("target_destination")?.value;
    this.flight.travellers=this.searchForm.get("travellers")?.value;
    sessionStorage.setItem("count",this.flight.travellers.toString());
    sessionStorage.setItem("travel_date",this.flight.travel_date);
+   sessionStorage.setItem("return_date",this.flight.return_date);
    console.log(this.flight.travel_date);
+   console.log(this.flight.return_date);
    
    this.searchService.getresultFlightsFromApi(this.flight.travel_date,this.flight.source_destination,this.flight.target_destination,this.flight.travellers).subscribe(
      data=>{this.flights=data,console.log(this.flights)},err=>err.error.Message);
    
-   this.msg="flights fetched";
+     this.returnflightsservice.getreturnFlightsFromApi(this.flight.return_date,this.flight.target_destination,this.flight.source_destination,this.flight.travellers).subscribe(
+      data=>{this.returnflights=data,console.log(this.returnflights)},err=>err.error.Message);
+   
+      this.msg="flights fetched";
 }
 // get travellers(){return this.searchForm.get('travellers')}
 

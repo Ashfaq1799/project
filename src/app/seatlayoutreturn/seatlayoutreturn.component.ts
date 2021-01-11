@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { SeatLayoutService } from '../services/seatLayout.service';
 
 @Component({
-  selector: 'app-seat-layout',
-  templateUrl: './seatlayout.component.html',
-  styleUrls: ['./seatlayout.component.css']
+  selector: 'app-seatlayoutreturn',
+  templateUrl: './seatlayoutreturn.component.html',
+  styleUrls: ['./seatlayoutreturn.component.css']
 })
-export class SeatLayoutComponent implements OnInit {
+export class SeatlayoutreturnComponent implements OnInit {
 
   private seatConfig: any = null;
   public seatmap = [];
@@ -28,10 +28,11 @@ export class SeatLayoutComponent implements OnInit {
     eventId : 0
   };
 
-  s:number=parseInt(sessionStorage.getItem("schedule_id"));
+  s:number=parseInt(sessionStorage.getItem("return_schedule_id"));
   seat:any;
   msg:any;
   title = 'seat-chart-generator';
+  
   constructor(public sl:SeatLayoutService,private router:Router) {
     
    }
@@ -379,15 +380,9 @@ export class SeatLayoutComponent implements OnInit {
     }
   }
 processBooking(){
-  sessionStorage.setItem("seatnos", JSON.stringify(this.cart.selectedSeats));
-  sessionStorage.setItem("cost",this.cart.totalamount.toString());
-  if(sessionStorage.getItem("bookreturn")!="false"){
-    // this.s=parseInt(sessionStorage.getItem("return_schedule_id"));
-    sessionStorage.setItem("bookreturn","false");
-    this.router.navigate(['returnseatlayout']);
-  }
-  else{
-    this.router.navigate(['Add']);
-  }
+  sessionStorage.setItem("returnseatnos", JSON.stringify(this.cart.selectedSeats));
+  sessionStorage.setItem("returncost",this.cart.totalamount.toString());
+  this.router.navigate(['Add']);
 }
 }
+

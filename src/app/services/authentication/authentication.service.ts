@@ -39,6 +39,14 @@ isadminauthenticated=false;
     sessionStorage.removeItem("booking_id");
     sessionStorage.removeItem("cost");
     sessionStorage.removeItem("ticket_id");
+    sessionStorage.removeItem("returnticket_id");
+    sessionStorage.removeItem("bookreturn");
+    sessionStorage.removeItem("returnseatnos");
+    sessionStorage.removeItem("return_booking_id");
+    sessionStorage.removeItem("returncost");
+    sessionStorage.removeItem("return_date");
+    sessionStorage.removeItem("return_schedule_id");
+
     // sessionStorage.removeItem("ticket_id");
   }
   adminlogout(){

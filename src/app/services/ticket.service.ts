@@ -11,4 +11,7 @@ export class TicketService {
   {
      return this.puthttp.post("http://localhost:62438/api/Tickets",ticket);
   }
+  public getticketsusingapi(id){
+    return this.puthttp.get("http://localhost:62438/api/Tickets/"+id);
+  }
 }

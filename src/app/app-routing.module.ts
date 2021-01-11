@@ -6,14 +6,17 @@ import { AddcomponentComponent } from './addcomponent/addcomponent.component';
 import { AddflightComponent } from './addflight/addflight.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { BookinghistoryComponent } from './bookinghistory/bookinghistory.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { GetflightsComponent } from './getflights/getflights.component';
 import { AuthguardGuard } from './guards/authguard.guard';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RevisedupdateflightComponent } from './revisedupdateflight/revisedupdateflight.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { SchedulelistComponent } from './schedulelist/schedulelist.component';
 import { SeatLayoutComponent } from './seatlayout/seatlayout.component';
+import { SeatlayoutreturnComponent } from './seatlayoutreturn/seatlayoutreturn.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { TicketpdfComponent } from './ticketpdf/ticketpdf.component';
 import { UpdateflightComponent } from './updateflight/updateflight.component';
@@ -25,12 +28,14 @@ const routes: Routes = [
   {path:"Home",component:HomeComponent},
   {path:"About",component:AboutComponent,canActivate:[AuthguardGuard]},
   {path:"Login",component:UserloginComponent},
-  {path:"Profile",component:ProfileComponent},
+  {path:"Profile",component:ProfileComponent,canActivate:[AuthguardGuard]},
   {path:"Add",component:AddcomponentComponent,canActivate:[AuthguardGuard]},
-  {path:"Checkout",component:CheckoutComponent},
-  {path:"seatlayout",component:SeatLayoutComponent},
+  {path:"Checkout",component:CheckoutComponent,canActivate:[AuthguardGuard]},
+  {path:"seatlayout",component:SeatLayoutComponent,canActivate:[AuthguardGuard]},
+  {path:"returnseatlayout",component:SeatlayoutreturnComponent,canActivate:[AuthguardGuard]},
   {path:"ticketgeneration",component:TicketComponent},
   {path:"pdfgeneration",component:TicketpdfComponent},
+  {path:"history",component:BookinghistoryComponent,canActivate:[AuthguardGuard]},
   // {path:"flight",component:UpdateflightComponent},
   // {path:"getflight",component:GetflightsComponent},
   // {path:"add",component:AddflightComponent},
@@ -42,7 +47,7 @@ const routes: Routes = [
   {path:'admin',component:AdminComponent},
   {path:'admin',component:AdminComponent,children:[{path:'viewflight',component:GetflightsComponent}]},
   {path:'admin',component:AdminComponent,children:[{path:'addflight',component:AddflightComponent}]},
-  {path:'admin',component:AdminComponent,children:[{path:'updateflight',component:UpdateflightComponent}]},
+  {path:'admin',component:AdminComponent,children:[{path:'updateflight',component:RevisedupdateflightComponent}]},
   {path:'admin',component:AdminComponent,children:[{path:'scheduleflight',component:ScheduleComponent}]},
   {path:'admin',component:AdminComponent,children:[{path:'schedulelist',component:SchedulelistComponent}]},
   {path:'admin',component:AdminComponent,children:[{path:'updateschedule',component:UpdatescheduleComponent}]}

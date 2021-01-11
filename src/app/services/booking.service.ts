@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Booking } from '../models/booking.model';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class BookingService {
 
   constructor(private puthttp:HttpClient) { }
-  public addbookingusingapi(booking)
+  public addbookingusingapi(booking:Booking)
   {
      return this.puthttp.post("http://localhost:62438/api/Booking",booking);
   }

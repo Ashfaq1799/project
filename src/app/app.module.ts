@@ -37,6 +37,13 @@ import { TicketComponent } from './ticket/ticket.component';
 import { BookingService } from "./services/booking.service";
 import { TicketService } from "./services/ticket.service";
 import { TicketpdfComponent } from './ticketpdf/ticketpdf.component';
+import { ReturnflightsService } from "./services/returnflights.service";
+import { SeatlayoutreturnComponent } from './seatlayoutreturn/seatlayoutreturn.component';
+import { RevisedupdateflightComponent } from './revisedupdateflight/revisedupdateflight.component';
+import { ReturnticketService } from "./services/returnticket.service";
+import { BookinghistoryComponent } from './bookinghistory/bookinghistory.component';
+import { CancelticketService } from "./services/cancelticket.service";
+import { BookinghistoryService } from "./services/bookinghistory.service";
 
 
 @NgModule({
@@ -60,7 +67,10 @@ import { TicketpdfComponent } from './ticketpdf/ticketpdf.component';
     SeatLayoutComponent,
     DisplayflightsComponent,
     TicketComponent,
-    TicketpdfComponent
+    TicketpdfComponent,
+    SeatlayoutreturnComponent,
+    RevisedupdateflightComponent,
+    BookinghistoryComponent
   ],
   imports: [
     CommonModule,
@@ -73,7 +83,7 @@ import { TicketpdfComponent } from './ticketpdf/ticketpdf.component';
     TooltipModule.forRoot()
   ],
   providers: [userService,EncrDecrServiceService,FlightService,SeatLayoutService,FlightsearchService,PassengerService,BookingService,
-  TicketService],
+  TicketService,ReturnflightsService,ReturnticketService,CancelticketService,BookinghistoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

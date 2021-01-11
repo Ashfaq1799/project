@@ -1,30 +1,42 @@
 <p>ticketpdf works!</p>
+<button (click)="showtickets()">show ticket</button>
 
+<div *ngIf=isclicked>
 <div id="divid" class="container">
-     <div id="top-bar">
-    <!-- <p>This is your ticket. </p> -->
-    <div id="logo-ticketmatic">
-    <img src="/assets/images/logo.png">
+    <div id="top-bar">
+    Ticket
+        <div id="logo-ticketmatic">
+            <img src="/assets/images/logo.png" width="50px" height="50px">
+        </div>
     </div>
-    </div>
-    <div>
-        ticket works inside pdf
-        <!-- {{ticket.flight_name}}
+    <div *ngFor="let ticket of tickets">
+        <!-- <h4>Flight Name:</h4>{{ticket.flight_name}}
         <br>
-        {{ticket.source_destination}}
+        <h4>Source:_destination</h4>{{ticket.source_destination}}<h4>target_destination:</h4>{{ticket.target_destination}}
         <br>
-        {{ticket.target_destination}}
+        <h4>arrival_time:</h4>{{ticket.arrival_time}}<h4>departure_time:</h4>{{ticket.departure_time}}
+        <br> 
+        <h4>passenger Name:</h4>{{ticket.name}}<h4>seat No.:</h4>{{ticket.seat_no}}
         <br>
-        {{ticket.passenger_name}}
+        <h4>gate:</h4>{{ticket.gate}} -->
+        Flight Name:{{ticket.flight_name}}
         <br>
-        {{ticket.seat_no}}
+        Source:_destination{{ticket.source_destination}}
         <br>
-        {{ticket.arrival_time}}
+        target_destination:{{ticket.target_destination}}
         <br>
-        {{ticket.departure_time}}
-        <br> -->
+        arrival_time:{{ticket.arrival_time}}
+        <br>
+        departure_time:{{ticket.departure_time}}
+        <br> 
+        passenger Name:{{ticket.name}}
+        <br>
+        seat No.:{{ticket.seat_no}}
+        <br>
+        gate:{{ticket.gate}}
     </div> 
- ticket to pdf
+</div>
  <button (click)="download()">Download pdf</button>
 </div>
+
 

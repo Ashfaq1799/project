@@ -36,12 +36,24 @@
         <option *ngFor ="let cl of classlist" [value]="cl">{{cl}}</option>
       </select> 
       <br>
+      
+        <label>One way</label>
+        <input type="radio" name="typeoftrip" value="1">
+        <div class="container" >
+        <label for="trip">Round trip</label>
+        <input type="radio" name="typeoftrip" value="2" id="trip">
+    
+
+        <div class="reveal-if-active">
+              <input type="date" name="return_date" formControlName="return_date" >
+        </div> 
+</div>
      <p> 
        <input type="submit" value="Search"> 
      </p>
   </form>
 </div>
-<app-displayflights [result_flights]="flights"></app-displayflights>
+<app-displayflights [result_flights]="flights" [return_flights]="returnflights"></app-displayflights>
 
 
 

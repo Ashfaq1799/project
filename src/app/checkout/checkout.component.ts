@@ -3,9 +3,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Booking } from '../models/booking.model';
 import { passenger } from '../models/passenger.model';
+import { ReturnBooking } from '../models/returnbooking.model';
 import { Ticket } from '../models/ticket.model';
 import { BookingService } from '../services/booking.service';
 import { PassengerService } from '../services/passenger.service';
+import { ReturnflightsService } from '../services/returnflights.service';
 import { TicketService } from '../services/ticket.service';
 
 @Component({
@@ -16,20 +18,30 @@ import { TicketService } from '../services/ticket.service';
 export class CheckoutComponent implements OnInit {
   checkoutForm:FormGroup;
   booking:Booking;
+  returnbooking:ReturnBooking;
   seat_nos= sessionStorage.getItem("seatnos");
   username=sessionStorage.getItem("username");
   travel_date=sessionStorage.getItem("travel_date");
   count:number=parseInt(sessionStorage.getItem("count"));
-  totalcost:number=parseInt(sessionStorage.getItem("cost"));
+  upcost:number=parseInt(sessionStorage.getItem("cost"));
   schedule_id=parseInt(sessionStorage.getItem("schedule_id"));
+  downcost:number=parseInt(sessionStorage.getItem("returncost"));
+  return_schedule_id=parseInt(sessionStorage.getItem("return_schedule_id"));
+  return_seat_nos= sessionStorage.getItem("returnseatnos");
+  return_date=sessionStorage.getItem("return_date");
   result:any;
+  dummy:any;
+  returnresult:any;
   ticket:Ticket;
   passengersid:number[]=[];
   seatnumbers:string[]=[];
+  
   // passengerdetails:passenger[];
   // passenger:any;
-  constructor(private passengerService:PassengerService,private router:Router,private bookingService:BookingService,private ticketService:TicketService) {
+  constructor(private passengerService:PassengerService,private router:Router,private bookingService:BookingService,private ticketService:TicketService,
+    private returnflightservice:ReturnflightsService) {
     this.booking=new Booking();
+    this.returnbooking= new ReturnBooking();
     this.ticket=new Ticket();
    }
 
@@ -60,11 +72,29 @@ export class CheckoutComponent implements OnInit {
  
   
   onsubmit(){
-    this.bookingService.addbookingusingapi(this.booking).subscribe(data=>{this.result=data
+    // this.dummy = parseInt(sessionStorage.getItem("return_schedule_id"));
+    this.booking.schedule_id=parseInt(sessionStorage.getItem("schedule_id"));
+    this.bookingService.addbookingusingapi(this.booking).subscribe(data=>{this.result=data 
       sessionStorage.setItem("booking_id",this.result.booking_id)});
+
+      this.returnbooking.return_schedule_id = parseInt(sessionStorage.getItem("return_schedule_id"));
+      this.returnflightservice.addreturnbookingusingapi(this.returnbooking).subscribe(data=>{this.returnresult=data
+        sessionStorage.setItem("return_booking_id",this.returnresult.booking_id)});
+
+    // this.returnbooking.return_schedule_id = parseInt(sessionStorage.getItem("return_schedule_id"));
+    // this.returnflightservice.addreturnbookingusingapi(this.returnbooking).subscribe(data=>{this.returnresult=data
+    //   sessionStorage.setItem("return_booking_id",this.returnresult.booking_id)});
+      // alert("congrats your payment has been recived , Enjoy your journey");
+    // this.generateticket();
     // this.generate();
-    this.router.navigate(['pdfgeneration']);
   }
+  
+  generateticket(){
+    this.router.navigateByUrl("pdfgeneration");
+  }
+  // generateticket(){
+  //     this.router.navigate(['ticketgeneration'])
+  // }
   // generate(){
   //   this.passengersid= JSON.parse(sessionStorage.getItem("passengers"));
   //   this.seatnumbers= JSON.parse(sessionStorage.getItem("seatnos"));

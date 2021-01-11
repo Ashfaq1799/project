@@ -1,10 +1,12 @@
-<h3>Available flights</h3>
+<a routerLink="/seatlayout"><button (click)="setflag()">book</button></a>
+    <div class="split left">
+        <h3>Available flights for forward journey</h3>
 
          <div *ngFor="let f of result_flights"> 
             <div class="container">
-      <div class="card" style="width:400px;margin-bottom:20px;margin-top:50px">
-            <div class="card-body" style="background-color:#EDf5e1;">
-                  <div class="card-text">
+                <div class="card" style="width:400px;margin-bottom:20px;margin-top:50px">
+                    <div class="card-body" style="background-color:#EDf5e1;">
+                        <div class="card-text">
                         Flight ID:{{f.flight_id}}<br>
                         Flight Name:{{f.flight_name}}<br>
                         Departure Time:{{f.departure_time}}
@@ -13,7 +15,70 @@
                         <br>
                         Duration:{{f.duration}}
                         <br>
-          <!-- Economy Class Fare:{{f.economy_class_fare}}
+                        <!-- <a routerLink="/seatlayout"><button (click)=redirect(f.schedule_id)>book></button></a>  -->
+                        <label for="pick">
+                            <input type="checkbox" id="pick" name=:pick (click)="setforward(f.schedule_id)"/>
+                            pick this flight
+                        </label> 
+                        <hr />
+
+                        <!--<label for="chkPassport">
+                    <input type="checkbox" id="chkPassport" onclick="ShowHideDiv(this)" />
+                    Do you have Passport?
+                            </label>
+                        <hr />
+<div id="dvPassport" style="display: none">
+    Passport Number:
+    <input type="text" id="txtPassportNumber" />
+</div> 
+                            function ShowHideDiv(chkPassport) {
+                            var dvPassport = document.getElementById("dvPassport");
+                            dvPassport.style.display = chkPassport.checked ? "block" : "none";
+                        }
+                    
+ checkbox = document.getElementById('conducted');
+
+checkbox.addEventListener('change', e => {
+
+    if(e.target.checked){
+        //do something
+    }
+
+});-->
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="split right" id="returnflights">
+        <h3>Available flights for return journey</h3>
+
+         <div *ngFor="let f of return_flights"> 
+            <div class="container">
+                <div class="card" style="width:400px;margin-bottom:20px;margin-top:50px">
+                    <div class="card-body" style="background-color:#EDf5e1;">
+                        <div class="card-text">
+                        Flight ID:{{f.flight_id}}<br>
+                        Flight Name:{{f.flight_name}}<br>
+                        Departure Time:{{f.departure_time}}
+                        <br>
+                        Arrival Time:{{f.arrival_time}}
+                        <br>
+                        Duration:{{f.duration}}
+                        <br>
+                        <label for="pick">
+                            <input type="checkbox" id="pick" name=:pick (click)="setbackward(f.schedule_id)"/>
+                            pick this flight
+                        </label> 
+                        <!-- <a routerLink="/seatlayout" ><button disabled (click)=redirect(f.schedule_id)>book</button></a> -->
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ <!-- Economy Class Fare:{{f.economy_class_fare}}
           <br>
           Business Class Fare:{{f.business_class_fare}}
           <br>
@@ -29,10 +94,3 @@
           <br>
           Seats in First Class:{{f.avail_first_class}}
           <br> -->
-      <a routerLink="/seatlayout"><button (click)=redirect(f.schedule_id)>book</button></a>
-      </div> 
-          </div>
-      </div>
-    </div>
-</div>
-  

@@ -1,0 +1,35 @@
+<p>bookinghistory works!</p>
+
+<div id="confirmed" *ngFor="let t of bookedtickets">
+    <p>Booking ID: {{t.booking_id}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Flight Name: {{t.flight_name}}</p>
+    <p>Source: {{t.source_destination}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Destination: {{t.target_destination}} </p>
+    <p>Passenger Name: {{t.name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Contact No.: {{t.phone}}</p>
+    <p>Seat No: {{t.seat_no}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terminal: {{t.gate}}</p>
+    <p>Departure Time: {{t.departure_time}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Arrival Time: {{t.arrival_time}}</p>
+    <p>Travel Date: {{t.travel_date}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Price: {{t.cost}}</p>
+    <span style="margin-left: 230px; margin-top: 10px; padding-bottom: 15px;"><button (click)="onCancel(t)" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Cancel Ticket</button></span>
+</div>
+<div class="container">  
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Alert..!</h4>
+          </div>
+          <div class="modal-body">
+            <p>Your booking history is updated</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="reload()">ok</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  
