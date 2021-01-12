@@ -20,8 +20,10 @@ export class UpdateflightComponent implements OnInit {
   city:string[];
   constructor(private FlightService:FlightService) {
     this.flight=new Flight();
-    this.city=["Chennai","Coimbatore","Hyderabad","Pune","Mumbai","Madurai","Delhi","Kolkata","Ahmedabad","Kochi","Banglore","Chandigarh","Mysore","Goa"];
-    this.statusvalid=["Servicable","Under-Maintainance","Discarded"];
+    this.city=["Thoothukudi",
+    "Chennai","Thiruvananthapuram","Pondicherry","PortBlair","Goa","Delhi","Mumbai","Srinagar","Surat","Kadapa","Nellore",
+    "Patna","Chandigarh","Delhi","Ahmedabad","Shimla","Srinagar","Ranchi","Bangalore","Mysore","Kochi","Kollam","Navi Mumbai","Pune",
+    "Madurai","Trichy","Salem","Coimbatore","Neyveli","Hosur","Hyderbad","Allahabad"];
     this.msg="";
     this.FlightService.getAllFlightsFromApi().subscribe(data=>{
       this.flights = data;console.log(this.flights)});

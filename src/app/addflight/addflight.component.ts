@@ -17,7 +17,10 @@ export class AddflightComponent implements OnInit {
     this.flight=new Flight();
     this.msg="";
     this.statusvalid=["Servicable","Under-Maintainance","Discarded"];
-    this.city=["Chennai","Coimbatore","Hyderabad","Pune","Mumbai","Madurai","Delhi","Kolkata","Ahmedabad","Kochi","Bangalore","Chandigarh","Mysore","Goa"];
+    this.city=["Thoothukudi",
+    "Chennai","Thiruvananthapuram","Pondicherry","PortBlair","Goa","Delhi","Mumbai","Srinagar","Surat","Kadapa","Nellore",
+    "Patna","Chandigarh","Delhi","Ahmedabad","Shimla","Srinagar","Ranchi","Bangalore","Mysore","Kochi","Kollam","Navi Mumbai","Pune",
+    "Madurai","Trichy","Salem","Coimbatore","Neyveli","Hosur","Hyderbad","Allahabad"];
   }
    InsertFlight()
    {

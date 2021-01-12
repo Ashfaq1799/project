@@ -16,7 +16,12 @@ isadminauthenticated=false;
     sessionStorage.setItem("username",username);
     this.isAuthenticated = true;
     console.log(this.isAuthenticated);
-    this.router.navigate(['Home']);
+    if(sessionStorage.getItem("schedule_id")!=null){
+      this.router.navigate(['seatlayout']);
+    }
+    else{
+      this.router.navigate(['Home']);
+    }
   }
 
   authenticateadmin(adminname){

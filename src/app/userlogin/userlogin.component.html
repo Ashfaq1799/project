@@ -33,7 +33,7 @@
                 <span class="error" *ngIf="username.invalid && username.touched">username is invalid</span>
 
                 <input type="password" class="input-field" placeholder="Enter password" id="reg_password" name="reg_password" formControlName="password"/>
-                <span class="error" *ngIf="password.invalid && password.touched">password should be minimum of 8 characters length</span>
+                <span class="error" *ngIf="password.invalid && password.touched">password should be minimum of 8 characters length,one small alphabet</span>
 
                 <input type="password" class="input-field" placeholder="Confirm password" id="confirm_password" name="confirm_password" formControlName="confirm_password"/>
                 <span class="error" *ngIf="(confirm_password.invalid &&  confirm_password.touched ) || registerForm.errors?.mismatch">

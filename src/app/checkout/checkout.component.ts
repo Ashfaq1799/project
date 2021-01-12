@@ -87,37 +87,24 @@ export class CheckoutComponent implements OnInit {
         this.returnflightservice.addreturnbookingusingapi(this.returnbooking).subscribe(data=>{this.returnresult=data
           sessionStorage.setItem("return_booking_id",this.returnresult.booking_id)});
       }
-    // this.returnbooking.return_schedule_id = parseInt(sessionStorage.getItem("return_schedule_id"));
-    // this.returnflightservice.addreturnbookingusingapi(this.returnbooking).subscribe(data=>{this.returnresult=data
-    //   sessionStorage.setItem("return_booking_id",this.returnresult.booking_id)});
-      // alert("congrats your payment has been recived , Enjoy your journey");
-    // this.generateticket();
-    // this.generate();
   }
   
   generateticket(){
-    // if(sessionStorage.getItem("bookreturn")=="false"){
-    //   this.returnbooking.schedule_id = parseInt(sessionStorage.getItem("return_schedule_id"));
-    //   console.log(this.returnbooking);
-    //   this.returnflightservice.addreturnbookingusingapi(this.returnbooking).subscribe(data=>{this.returnresult=data
-    //     sessionStorage.setItem("return_booking_id",this.returnresult.booking_id)});
-    // }
    this.router.navigateByUrl("pdfgeneration");
   }
-  // generateticket(){
-  //     this.router.navigate(['ticketgeneration'])
-  // }
-  // generate(){
-  //   this.passengersid= JSON.parse(sessionStorage.getItem("passengers"));
-  //   this.seatnumbers= JSON.parse(sessionStorage.getItem("seatnos"));
-  //   for(let index=0;index<this.seatnumbers.length;index++){
-  //     this.ticket = new Ticket();
-  //     this.ticket.seat_no=this.seatnumbers[index];
-  //     this.ticket.passenger_id = this.passengersid[index];
-  //     console.log(parseInt(sessionStorage.getItem("booking_id")));
-  //     this.ticket.booking_id = parseInt(sessionStorage.getItem("booking_id"));
-  //     this.ticketService.addticketusingapi(this.ticket).subscribe(data=>{this.result=data
-  //       sessionStorage.setItem("ticket_id",this.result.ticket_id)});
-  //   }
+  cancel(){
+    sessionStorage.removeItem("count");
+    sessionStorage.removeItem("schedule_id");
+    sessionStorage.removeItem("travel_date");
+    sessionStorage.removeItem("passengers");
+    sessionStorage.removeItem("seatnos");
+    sessionStorage.removeItem("cost");
+    sessionStorage.removeItem("bookreturn");
+    sessionStorage.removeItem("returnseatnos");
+    sessionStorage.removeItem("returncost");
+    sessionStorage.removeItem("return_date");
+    sessionStorage.removeItem("return_schedule_id");
+    this.router.navigate(['Home']);
+  }
   }
 

@@ -9,6 +9,7 @@ import { user } from '../models/user.model';
 import { title } from 'process';
 import { AuthenticationService } from '../services/authentication/authentication.service';
 import { EncrDecrServiceService } from '../services/encr-decr-service.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class UserloginComponent implements OnInit {
   userlogin:user;
   u:any;
 
-  constructor(private userService:userService,private AuthenticationService:AuthenticationService,private EncrDecr:EncrDecrServiceService) { 
+  constructor(private userService:userService,private AuthenticationService:AuthenticationService,private EncrDecr:EncrDecrServiceService,private router:Router) { 
     this.user = new user();
     this.userlogin=new user();
   }
@@ -35,7 +36,7 @@ export class UserloginComponent implements OnInit {
       firstname:new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
       lastname:new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
       username:new FormControl('',[Validators.required,Validators.email]),
-      password:new FormControl('',[Validators.required,Validators.minLength(8)]),
+      password:new FormControl('',[Validators.required,Validators.pattern(/^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{8,}$/)]),
       confirm_password:new FormControl('',[Validators.required,Validators.minLength(8)]),
       dob:new FormControl('',Validators.required),
       phone:new FormControl('',[Validators.required,Validators.minLength(10),Validators.maxLength(15)])
@@ -83,6 +84,7 @@ export class UserloginComponent implements OnInit {
     else{
       this.msg="invalid login credentials";
     }
+
 },
     err=>this.msg=err.error.Message); 
  }

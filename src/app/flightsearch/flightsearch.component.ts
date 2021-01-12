@@ -32,19 +32,24 @@ export class SearchFlightComponent implements OnInit
    constructor(private searchService:FlightsearchService,private returnflightsservice:ReturnflightsService)
    {
      this.flight=new Flight();
-     this.citylist=["Chennai","Coimbatore","Hyderabad","Pune","Mumbai","Madurai","Delhi","Kolkata","Ahmedabad","Kochi","Bangalore","Chandigarh","Mysore","Goa"];
+     this.citylist=["Thoothukudi",
+      "Chennai","Thiruvananthapuram","Pondicherry","PortBlair","Goa","Delhi","Mumbai","Srinagar","Surat","Kadapa","Nellore",
+      "Patna","Chandigarh","Delhi","Ahmedabad","Shimla","Srinagar","Ranchi","Bangalore","Mysore","Kochi","Kollam","Navi Mumbai","Pune",
+      "Madurai","Trichy","Salem","Coimbatore","Neyveli","Hosur","Hyderbad","Allahabad"];
      this.classlist=["Economy","Premium","First","Business"];
      this.searchForm=new FormGroup({
       travel_date:new FormControl('',Validators.required),
       source_destination:new FormControl('',Validators.required),
       target_destination:new FormControl('',Validators.required),
-      travellers:new FormControl('',Validators.required),
+      travellers:new FormControl('',[Validators.required,Validators.pattern("(0?[1-9]|[1-9][0-9]|[1][1-9][1-9]|200)")]),
       flight_class:new FormControl('',Validators.required),
       return_date:new FormControl('',Validators.required)
     })
    }
 
-  
+   get f(){
+    return this.searchForm.controls;
+  }
 
  onSubmit()
  {
