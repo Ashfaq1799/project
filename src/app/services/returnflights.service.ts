@@ -16,7 +16,7 @@ export class ReturnflightsService {
     }
     public addreturnbookingusingapi(returnbooking:ReturnBooking)
     {
-       return this.returnflights.post("http://localhost:62438/api/Booking",returnbooking);
+       return this.returnflights.post("http://localhost:62438/api/BookReturn",returnbooking);
     }
     
     

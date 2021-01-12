@@ -77,10 +77,6 @@ export class CheckoutComponent implements OnInit {
     this.bookingService.addbookingusingapi(this.booking).subscribe(data=>{this.result=data 
       sessionStorage.setItem("booking_id",this.result.booking_id)});
 
-      this.returnbooking.return_schedule_id = parseInt(sessionStorage.getItem("return_schedule_id"));
-      this.returnflightservice.addreturnbookingusingapi(this.returnbooking).subscribe(data=>{this.returnresult=data
-        sessionStorage.setItem("return_booking_id",this.returnresult.booking_id)});
-
     // this.returnbooking.return_schedule_id = parseInt(sessionStorage.getItem("return_schedule_id"));
     // this.returnflightservice.addreturnbookingusingapi(this.returnbooking).subscribe(data=>{this.returnresult=data
     //   sessionStorage.setItem("return_booking_id",this.returnresult.booking_id)});
@@ -90,7 +86,13 @@ export class CheckoutComponent implements OnInit {
   }
   
   generateticket(){
-    this.router.navigateByUrl("pdfgeneration");
+    if(sessionStorage.getItem("bookreturn")=="false"){
+      this.returnbooking.schedule_id = parseInt(sessionStorage.getItem("return_schedule_id"));
+      console.log(this.returnbooking);
+      this.returnflightservice.addreturnbookingusingapi(this.returnbooking).subscribe(data=>{this.returnresult=data
+        sessionStorage.setItem("return_booking_id",this.returnresult.booking_id)});
+    }
+    // this.router.navigateByUrl("pdfgeneration");
   }
   // generateticket(){
   //     this.router.navigate(['ticketgeneration'])

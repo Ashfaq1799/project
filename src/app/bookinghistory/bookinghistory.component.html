@@ -1,5 +1,20 @@
 <p>bookinghistory works!</p>
-
+<div></div>
+<ul class="nav nav-tabs nav-justified">
+  <li class="active"><a href="#">Home</a></li>
+  <li id="menu1"><a href="#">Menu 1</a></li>
+  <li><a href="#">Menu 2</a></li>
+  <li><a href="#">Menu 3</a></li>
+</ul>
+<br>
+<h3>Centered Pills</h3>
+<ul class="nav nav-pills nav-justified">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href=".menu1">Menu 1</a></li>
+  <li><a href="#">Menu 2</a></li>
+  <li><a href="#">Menu 3</a></li>
+</ul>
+</div>
 <div id="confirmed" *ngFor="let t of bookedtickets">
     <p>Booking ID: {{t.booking_id}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Flight Name: {{t.flight_name}}</p>
     <p>Source: {{t.source_destination}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Destination: {{t.target_destination}} </p>
