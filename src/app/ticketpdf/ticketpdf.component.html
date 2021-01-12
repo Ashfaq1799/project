@@ -9,16 +9,7 @@
             <img src="/assets/images/logo.png" width="50px" height="50px">
         </div>
     </div>
-    <div *ngFor="let ticket of tickets">
-        <!-- <h4>Flight Name:</h4>{{ticket.flight_name}}
-        <br>
-        <h4>Source:_destination</h4>{{ticket.source_destination}}<h4>target_destination:</h4>{{ticket.target_destination}}
-        <br>
-        <h4>arrival_time:</h4>{{ticket.arrival_time}}<h4>departure_time:</h4>{{ticket.departure_time}}
-        <br> 
-        <h4>passenger Name:</h4>{{ticket.name}}<h4>seat No.:</h4>{{ticket.seat_no}}
-        <br>
-        <h4>gate:</h4>{{ticket.gate}} -->
+    <div *ngFor="let ticket of tickets" id="forward">
         Flight Name:{{ticket.flight_name}}
         <br>
         Source:_destination{{ticket.source_destination}}
@@ -34,6 +25,23 @@
         seat No.:{{ticket.seat_no}}
         <br>
         gate:{{ticket.gate}}
+    </div> 
+    <div *ngFor="let t of returntickets" id="return">
+        Flight Name:{{t.flight_name}}
+        <br>
+        Source:_destination{{t.source_destination}}
+        <br>
+        target_destination:{{t.target_destination}}
+        <br>
+        arrival_time:{{t.arrival_time}}
+        <br>
+        departure_time:{{t.departure_time}}
+        <br> 
+        passenger Name:{{t.name}}
+        <br>
+        seat No.:{{t.seat_no}}
+        <br>
+        gate:{{t.gate}}
     </div> 
 </div>
  <button (click)="download()">Download pdf</button>

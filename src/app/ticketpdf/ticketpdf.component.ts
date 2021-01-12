@@ -49,8 +49,8 @@ export class TicketpdfComponent implements OnInit {
   ngOnInit(): void {
     this.passengersid= JSON.parse(sessionStorage.getItem("passengers"));
     this.seatnumbers= JSON.parse(sessionStorage.getItem("seatnos"));
-
     this.returnseatnumbers = JSON.parse(sessionStorage.getItem("returnseatnos"));
+    console.log(this.returnseatnumbers);
 
     // console.log(parseInt(sessionStorage.getItem("booking_id")));
     for(let index=0;index<this.seatnumbers.length;index++){

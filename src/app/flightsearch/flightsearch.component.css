@@ -10,12 +10,25 @@
     max-height: 0;
     overflow: hidden;
   } 
-  
-  
-  
+  button
+  {
+      background-color: #3B5998;
+      cursor:pointer;
+  }
+  #searchbtn{
+    margin-top: 25px;
+    height: 50px;
+    width: 150px;
+    border-radius: 0;
+  }
+    
   input[type="radio"]:checked ~ .reveal-if-active
    {
     opacity: 1;
     max-height: 100px; 
     overflow: visible;
+  }
+
+  .container{
+    width:fit-content;
   }

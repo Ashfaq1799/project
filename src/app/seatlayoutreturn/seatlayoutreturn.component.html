@@ -1,4 +1,4 @@
-return seat layout works
+<h1 style="text-align:center">Pick seat(s) for return journey</h1>
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
     <div class="col-lg-12 seat-container" >
@@ -36,7 +36,7 @@ return seat layout works
           </div>
       </div>
       <div class="col-lg-12 book-area">
-        <button [disabled]="cart?.selectedSeats?.length == 0" type="button"  (click)="processBooking()" class="btn btn-primary" mdbWavesEffect>Book Now</button>
+        <button [disabled]="cart?.selectedSeats?.length < count" type="button"  (click)="processBooking()" class="btn btn-primary" mdbWavesEffect>Book Now</button>
       </div>
     </div>
     </div>

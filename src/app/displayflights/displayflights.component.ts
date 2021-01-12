@@ -31,7 +31,7 @@ export class DisplayflightsComponent implements OnInit {
     // sessionStorage.setItem("count",this.travellers.toString())
   }
   setflag(){
-    if(sessionStorage.getItem("return_schedule_id")!=null){
+    if(sessionStorage.getItem("return_date")!=""){
       sessionStorage.setItem("bookreturn","true");
     }
   }

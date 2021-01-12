@@ -67,6 +67,7 @@ export class UserloginComponent implements OnInit {
     this.userService.registeruserusingapi(this.user).subscribe(data=>console.log(data),err=>this.msg=err.error.Message);
     this.registerForm.reset();
     alert("Welcome to Infotech Airlines , User Registered Succeessfully");
+    this.register();
   }
 
  onlogin(){

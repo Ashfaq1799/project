@@ -7,7 +7,9 @@ import { AddflightComponent } from './addflight/addflight.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { BookinghistoryComponent } from './bookinghistory/bookinghistory.component';
+import { CancelledComponent } from './cancelled/cancelled.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { ConfirmedComponent } from './confirmed/confirmed.component';
 import { GetflightsComponent } from './getflights/getflights.component';
 import { AuthguardGuard } from './guards/authguard.guard';
 import { HomeComponent } from './home/home.component';
@@ -36,6 +38,8 @@ const routes: Routes = [
   {path:"ticketgeneration",component:TicketComponent},
   {path:"pdfgeneration",component:TicketpdfComponent},
   {path:"history",component:BookinghistoryComponent,canActivate:[AuthguardGuard]},
+  {path:'history',component:BookinghistoryComponent,children:[{path:"confirmed",component:ConfirmedComponent,canActivate:[AuthguardGuard]}]},
+  {path:'history',component:BookinghistoryComponent,children:[{path:"cancelled",component:CancelledComponent,canActivate:[AuthguardGuard]}]},
   // {path:"flight",component:UpdateflightComponent},
   // {path:"getflight",component:GetflightsComponent},
   // {path:"add",component:AddflightComponent},

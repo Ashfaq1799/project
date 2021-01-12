@@ -31,6 +31,7 @@ export class SeatLayoutComponent implements OnInit {
   s:number=parseInt(sessionStorage.getItem("schedule_id"));
   seat:any;
   msg:any;
+  count:number;
   title = 'seat-chart-generator';
   constructor(public sl:SeatLayoutService,private router:Router) {
     
@@ -39,6 +40,7 @@ export class SeatLayoutComponent implements OnInit {
 
 
    ngOnInit(): void {
+    this.count=parseInt(sessionStorage.getItem("count"));
     //Process a simple flight layout
     this.seatConfig = [
       {
@@ -256,7 +258,7 @@ export class SeatLayoutComponent implements OnInit {
               totalItemCounter++;
               mapObj["seats"].push(seatObj);
             });
-            console.log(" \n\n\n Seat Objects " , mapObj);
+            // console.log(" \n\n\n Seat Objects " , mapObj);
             this.seatmap.push( mapObj );
 
           });

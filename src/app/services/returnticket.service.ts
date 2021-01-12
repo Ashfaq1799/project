@@ -8,6 +8,6 @@ export class ReturnticketService {
 
   constructor(private http:HttpClient) { }
   public getreturnticketsusingapi(id){
-    return this.http.get("http://localhost:62438/api/Tickets/"+id);
+    return this.http.get("http://localhost:62438/api/ReturnTickets/"+id);
   }
 }

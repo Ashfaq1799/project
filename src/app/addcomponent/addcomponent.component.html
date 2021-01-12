@@ -1,6 +1,6 @@
 <button class="open-button" (click)="openForm()">Add passenger<i class="fa fa-user-plus" aria-hidden="true"></i></button>
-  <p>Click to refresh<button (click)="reload()"><i class="fa fa-refresh" aria-hidden="true"></i></button></p>
-  <button (click)="proceed()">proceed</button>
+  <!-- <p>Click to refresh<button (click)="reload()"><i class="fa fa-refresh" aria-hidden="true"></i></button></p> -->
+  <button (click)="proceed()" [disabled]="canproceed" style="margin-top:25px;margin-left:25px">proceed for checkout</button>
     <!-- <div *ngIf=msg class="error">
      <div class="alert" id="err">
       <button class="closebtn" onclick="exit()">close</button> 
@@ -11,8 +11,8 @@
         <input type="text"  placeholder="Enter name" id="name" name="name" ngModel #name="ngModel" required/>
         <span *ngIf="name.invalid && name.touched" class="error">*name is required</span>
 
-        <input type="text" placeholder="Enter address" id="address" name="address" ngModel #address="ngModel" pattern="[a-zA-Z /]*" required/>
-        <span *ngIf="address.invalid && address.touched" class="error">*address is required</span>
+        <input type="text" placeholder="Enter address" id="address" name="address" ngModel #address="ngModel" pattern="[a-zA-Z0-9 /,-]*" required/>
+        <span *ngIf="address.invalid && address.touched" class="error">*address is invalid</span>
 
         <input type="number" placeholder="Enter phone" id="phone" name="phone" ngModel #phone ="ngModel" minlength="10" maxlength="15" required/>
         <span *ngIf="phone.invalid && phone.touched" class="error">*phone is required</span>
@@ -33,7 +33,7 @@
             <option value="student">Student</option>
             <option value="others">others</option>
         </select>
-        <button type="submit" [disabled]="form.invalid" class="btn" >Add</button>
+        <button type="submit" [disabled]="form.invalid" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add</button>
         <button type="reset" class="btn cancel">Reset</button>
         <button type="reset" class="btn cancel" (click)="close()">Close</button>
         <!-- <div *ngIf=msg class="error">
@@ -54,15 +54,32 @@
             <p>{{p.phone}}</p>
             <p>{{p.age}}</p>
          </div>
-        <button (click)="remove(p.passenger_id)" class="btn btn-primary">Remove</button>
-        <button (click)="select(p.passenger_id)" class="btn btn-primary">Select</button>
+        <!-- <button (click)="remove(p.passenger_id)" class="btn btn-primary">Remove</button> -->
+        <button (click)="select(p.passenger_id)" class="btn btn-primary" [disabled]="isvalid">Select</button>
       </div>
     </details>
   </div>
 </div>
-<!-- <div *ngIf=msg class="error">
-  <div class="alert" id="err">
-   <button class="closebtn" (click)="exit()">close</button> 
- </div> 
- </div>-->
+ <div class="container">  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Success..!</h4>
+        </div>
+        <div class="modal-body">
+          <p>passenger added successfully</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="reload()">ok</button>
+          <!-- <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button> -->
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
     

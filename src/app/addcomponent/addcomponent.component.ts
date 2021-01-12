@@ -20,9 +20,13 @@ export class AddcomponentComponent implements OnInit {
   number:any;
   index:any;
   selectedpassengers:number[]= [];
+  isvalid:boolean=true;
+  canproceed:boolean=true;
   constructor(private userService:userService,private route:Router) { 
     this.passenger=new passenger();
-
+    if(sessionStorage.getItem("schedule_id")!=null){
+      this.isvalid=false;
+    }
   }
 
   ngOnInit(): void {
@@ -35,10 +39,10 @@ export class AddcomponentComponent implements OnInit {
   Add(passenger) {
   passenger.username=sessionStorage.getItem("username");
   this.userService.addpassengerusingapi(sessionStorage.getItem("username"),passenger).subscribe(data=>{this.result=data
-      alert("passenger added successfully");
-      this.passengers.push(passenger)},
-      err=>alert(err.error.Message));
- this.reload();
+      // alert("passenger added successfully");
+      // this.passengers.push(passenger)},
+  },err=>alert(err.error.Message));
+//  this.reload();
  document.getElementById("myForm").style.display = "none";
   }
   close(){
@@ -73,6 +77,9 @@ export class AddcomponentComponent implements OnInit {
     // this.selectedpassengers.push(num);
     if((parseInt(sessionStorage.getItem("count"))>this.selectedpassengers.length)){
         this.selectedpassengers.push(num);
+        if(this.selectedpassengers.length==(parseInt(sessionStorage.getItem("count")))){
+          this.canproceed=false;
+          }
     }
     else{
       alert("number of passengers exceeds the selected seats")

@@ -44,6 +44,10 @@ import { ReturnticketService } from "./services/returnticket.service";
 import { BookinghistoryComponent } from './bookinghistory/bookinghistory.component';
 import { CancelticketService } from "./services/cancelticket.service";
 import { BookinghistoryService } from "./services/bookinghistory.service";
+import { ConfirmedComponent } from './confirmed/confirmed.component';
+import { CancelledComponent } from './cancelled/cancelled.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -70,7 +74,11 @@ import { BookinghistoryService } from "./services/bookinghistory.service";
     TicketpdfComponent,
     SeatlayoutreturnComponent,
     RevisedupdateflightComponent,
-    BookinghistoryComponent
+    BookinghistoryComponent,
+    ConfirmedComponent,
+    CancelledComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,

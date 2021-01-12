@@ -17,17 +17,17 @@
               <span class="error" *ngIf="name.invalid && name.touched">name is invalid</span>
   
               <label for="ccnum">Credit card number</label>
-              <input type="text" id="ccnum" name="cardnumber" placeholder="Enter your card number" formControlName="card_number">
+              <input type="text" id="ccnum" name="cardnumber" placeholder="Enter your card number" formControlName="card_number" minlength="16" maxlength="16">
               <span class="error" *ngIf="card_number.invalid && card_number.touched">card number is invalid</span>
   
               <label for="expmonth">Exp Month</label>
-              <input type="text" id="expmonth" name="expmonth" placeholder="Enter Expiry month" formControlName="expiry_month" >
+              <input type="number" id="expmonth" name="expmonth" placeholder="Enter Expiry month" formControlName="expiry_month" step="1" min="1" max="12">
               <span class="error" *ngIf="expiry_month.invalid && expiry_month.touched">expiry month is invalid</span>
   
               <div class="row">
                 <div class="col-50">
                   <label for="expyear">Exp Year</label>
-                  <input type="text" id="expyear" name="exp_year" placeholder="Enter expiry year" formControlName="expiry_year">
+                  <input type="text" id="expyear" name="exp_year" placeholder="Enter expiry year" formControlName="expiry_year" step="1" min="2021" max="2026">
                   <span class="error" *ngIf="expiry_year.invalid && expiry_year.touched">expiry year is invalid</span>
   
                 </div>
@@ -40,9 +40,6 @@
               </div>
             </div>
           </div>
-          <!-- <label>
-            <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-          </label> -->
           <input type="submit" [disabled]="!checkoutForm.valid" value="Continue to checkout" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
           <!-- <input type="button" [disabled]="!checkoutForm.valid" value="generate ticket" class="btn" (click)="generateticket()"> -->
         </form>
@@ -50,7 +47,7 @@
     </div>
     <div class="col-50">
       <div class="container">
-        <h4>No of Journies opted for<span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>{{count}}</b></span></h4>
+        <h4>No of Passengers booked<span class="price" style="color:black"><b>{{count}}</b></span></h4>
         <div>
         <p>username<span class="price">{{username}}</span></p>
         <hr>
@@ -67,20 +64,14 @@
       </div>
     </div>
   </div>
-  <div class="container">
-    <h2>Modal Example</h2>
-    <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-  
+  <div class="container">  
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-dialog">
-      
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Header</h4>
+            <h4 class="modal-title">Payment Successful</h4>
           </div>
           <div class="modal-body">
             <p>Congrats Your journey has been confirmed</p>
