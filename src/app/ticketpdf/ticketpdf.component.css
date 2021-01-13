@@ -1,9 +1,19 @@
 #return{
-    float:right;
+    float:left;
+    background-color:#edf5e1;
+    border:2px solid rgb(132, 207, 172);
+    margin-left:25px;
+    padding:10px;
 }
 #divid{
-    display: flex;
+    /* display: flex; */
+    overflow-wrap: break-word;
+
 }
 #forward{
     float:left;
+    background-color:#edf5e1;
+    border:2px solid rgb(132, 207, 172);
+    margin-left:25px;
+    padding:10px;
 }

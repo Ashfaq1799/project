@@ -51,6 +51,9 @@ import { FooterComponent } from './footer/footer.component';
 import { FareComponent } from './fare/fare.component';
 import { FareService } from "./services/fare.service";
 import { ReturnfareService } from "./services/returnfare.service";
+import { ForgetpasswordService } from "./services/forgetpassword.service";
+import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 
 @NgModule({
@@ -82,7 +85,9 @@ import { ReturnfareService } from "./services/returnfare.service";
     CancelledComponent,
     HeaderComponent,
     FooterComponent,
-    FareComponent
+    FareComponent,
+    ForgetpasswordComponent,
+    ResetpasswordComponent
   ],
   imports: [
     CommonModule,
@@ -95,7 +100,7 @@ import { ReturnfareService } from "./services/returnfare.service";
     TooltipModule.forRoot()
   ],
   providers: [userService,EncrDecrServiceService,FlightService,SeatLayoutService,FlightsearchService,PassengerService,BookingService,
-  TicketService,ReturnflightsService,ReturnticketService,CancelticketService,BookinghistoryService,FareService,ReturnfareService],
+  TicketService,ReturnflightsService,ReturnticketService,CancelticketService,BookinghistoryService,FareService,ReturnfareService,ForgetpasswordService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

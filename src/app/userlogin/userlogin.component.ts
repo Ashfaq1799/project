@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, formatDate } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
@@ -65,6 +65,7 @@ export class UserloginComponent implements OnInit {
     this.user.dob=this.registerForm.get('dob').value;
     this.user.phone=this.registerForm.get('phone').value;
     console.log(this.user);
+    // console.log(this.registerForm.controls.controlName.setValue(formatDate(this.user.dob,'yyyy-MM-dd','en')));
     // this.user = Object.assign(this.user, this.registerForm.value);
     this.userService.registeruserusingapi(this.user).subscribe(data=>console.log(data),err=>this.msg=err.error.Message);
     this.registerForm.reset();

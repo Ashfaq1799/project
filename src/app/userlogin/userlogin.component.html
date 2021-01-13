@@ -9,7 +9,7 @@
             <form>
                 <input type="text" class="input-field" placeholder="Enter username" id="username" name="username" [(ngModel)]="userlogin.username" required/>
                 <input type="password" class="input-field" placeholder="Enter password" id="password" name="password" [(ngModel)]="userlogin.password" required/>
-                <input type="checkbox" class="check-box"/><span>Forget password</span>
+                <button class="check-box" [routerLink]="['/forgetpassword']">Forget password</button>
                 <div *ngIf=msg class="error">
                     {{msg}}
                 </div>
@@ -40,8 +40,8 @@
                     Password doesn't match
                 </span>
 
-                <input type="date" class="input-field" placeholder="Enter date of birth" id="dob" name="dob" max="date" formControlName="dob"/>
-                <span class="error" *ngIf="dob.input-field.invalid && dob.touched ">Invalid phone number</span>
+                <input type="date" class="input-field" id="dob" name="dob" min ="1960-01-01" max="2021-01-14" formControlName="dob"/>
+                <!-- <span class="error" *ngIf="dob.invalid && dob.touched">Invalid phone number</span> -->
 
                 <input type="text" class="input-field" placeholder="Enter phone number" id="phone" name ="phone" formControlName="phone"/>
                 <span class="error" *ngIf="phone.invalid && phone.touched">Invalid phone number</span>

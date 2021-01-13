@@ -86,11 +86,11 @@
         <br>
         <div class="form-group">
         <label>Current status</label>
-        <select [(ngModel)]="schedule.status"  class="form-control" name="status" #status="ngModel" required>
+        <select [(ngModel)]="schedule.schedule_status"  class="form-control" name="schedule_status" #schedule_status="ngModel" required>
             <option value="" selected data-default class="current">Flight status</option>
             <option *ngFor="let s of schedulestatus" [value]="s" >{{s}}</option>
         </select>
-        <div [hidden]="status.valid || status.pristine"
+        <div [hidden]="schedule_status.valid || schedule_status.pristine"
              class="alert alert-danger">
           Required
         </div>

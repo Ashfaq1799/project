@@ -51,6 +51,14 @@ isadminauthenticated=false;
     sessionStorage.removeItem("returncost");
     sessionStorage.removeItem("return_date");
     sessionStorage.removeItem("return_schedule_id");
+    sessionStorage.removeItem("efare");
+    sessionStorage.removeItem("bfare");
+    sessionStorage.removeItem("ffare");
+    sessionStorage.removeItem("pfare");
+    sessionStorage.removeItem("refare");
+    sessionStorage.removeItem("rbfare");
+    sessionStorage.removeItem("rffare");
+    sessionStorage.removeItem("rpfare");
 
     // sessionStorage.removeItem("ticket_id");
   }

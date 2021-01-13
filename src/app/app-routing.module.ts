@@ -10,10 +10,12 @@ import { BookinghistoryComponent } from './bookinghistory/bookinghistory.compone
 import { CancelledComponent } from './cancelled/cancelled.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ConfirmedComponent } from './confirmed/confirmed.component';
+import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
 import { GetflightsComponent } from './getflights/getflights.component';
 import { AuthguardGuard } from './guards/authguard.guard';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { RevisedupdateflightComponent } from './revisedupdateflight/revisedupdateflight.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { SchedulelistComponent } from './schedulelist/schedulelist.component';
@@ -37,6 +39,8 @@ const routes: Routes = [
   {path:"returnseatlayout",component:SeatlayoutreturnComponent,canActivate:[AuthguardGuard]},
   {path:"ticketgeneration",component:TicketComponent},
   {path:"pdfgeneration",component:TicketpdfComponent},
+  {path:"forgetpassword",component:ForgetpasswordComponent},
+  {path:"ResetPassword",component:ResetpasswordComponent},
   {path:"history",component:BookinghistoryComponent,canActivate:[AuthguardGuard]},
   {path:'history',component:BookinghistoryComponent,children:[{path:"confirmed",component:ConfirmedComponent,canActivate:[AuthguardGuard]}]},
   {path:'history',component:BookinghistoryComponent,children:[{path:"cancelled",component:CancelledComponent,canActivate:[AuthguardGuard]}]},

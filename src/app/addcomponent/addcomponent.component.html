@@ -27,12 +27,16 @@
         <br>
 
         <label for="profession">select profession</label>
-        <select placeholder="Enter profession" id="profession" ngModel #profession="ngModel" name ="profession">
+        <select placeholder="Enter profession" id="profession" ngModel #profession="ngModel" name ="profession" required>
             <option value="farmer">farmer</option>
             <option value="Service">Army/Navy/Airforce</option>
             <option value="student">Student</option>
-            <option value="others">others</option>
+            <option value="others" selected>others</option>
         </select>
+        <div [hidden]="profession.valid || profession.pristine" class="alert alert-danger">
+            Required
+        </div>
+        
         <button type="submit" [disabled]="form.invalid" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add</button>
         <button type="reset" class="btn cancel">Reset</button>
         <button type="reset" class="btn cancel" (click)="close()">Close</button>

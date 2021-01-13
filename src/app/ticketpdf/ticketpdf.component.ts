@@ -28,18 +28,28 @@ export class TicketpdfComponent implements OnInit {
   constructor(private ticketService:TicketService,private returnticketservice:ReturnticketService) {
     
    }
-  download()
-  {
-    var element=document.getElementById('divid');
-    html2canvas(element).then((canvas)=>{
-      console.log(canvas)
-      var imgData=canvas.toDataURL('image/png')
-      var imgHeight=canvas.height*280/canvas.width;
-      var doc=new jspdf()
+  // download()
+  // {
+  //   var element=document.getElementById('divid');
+  //   html2canvas(element).then((canvas)=>{
+  //     console.log(canvas)
+  //     var imgData=canvas.toDataURL('image/png')
+  //     var imgHeight=canvas.height*280/canvas.width;
 
-      doc.addImage(imgData,0,0,280,imgHeight)
-      doc.save("ticket.pdf")
-    })
+  //     var doc=new jspdf();
+
+  //     doc.addImage(imgData,0,0,280,imgHeight)
+  //     doc.save("ticket.pdf")
+  //   })
+  // }
+download(){
+const printContent = document.getElementById("divid");
+const WindowPrt = window.open('', '','left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
+WindowPrt.document.write(printContent.innerHTML);
+WindowPrt.document.close();
+WindowPrt.focus();
+WindowPrt.print();
+WindowPrt.close();
   }
   showtickets(){
     this.isclicked=true;
