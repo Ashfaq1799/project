@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Display } from '../models/display.model';
 import { Flight } from '../models/flightsearch.model.';
+import { FareService } from '../services/fare.service';
 import { FlightsearchService } from '../services/flightsearch.service';
+import { ReturnfareService } from '../services/returnfare.service';
 
 @Component({
   selector: 'app-displayflights',
@@ -15,8 +17,11 @@ export class DisplayflightsComponent implements OnInit {
   @Input() travellers:number;
   flightslist:any;
   flight:Flight;
+  fares:any;
+  s:number;
+  returnfares:any;
   bookreturn:string="false";
-  constructor(private searchservice:FlightsearchService) { 
+  constructor(private searchservice:FlightsearchService,private fareservice:FareService,private returnfareservice:ReturnfareService) { 
     // this.newUser=new Flight();
     // console.log(this.newUser);
     this.flight=new Flight();
@@ -34,11 +39,19 @@ export class DisplayflightsComponent implements OnInit {
     if(sessionStorage.getItem("return_date")!=""){
       sessionStorage.setItem("bookreturn","true");
     }
+    this.fareservice.getfare(parseInt(sessionStorage.getItem("schedule_id"))).subscribe(f=>{this.fares=f
+      sessionStorage.setItem("efare",this.fares.economy_class_fare),
+      sessionStorage.setItem("ffare",this.fares.first_class_fare),
+      sessionStorage.setItem("bfare",this.fares.business_class_fare),
+      sessionStorage.setItem("pfare",this.fares.premium_class_fare)});
+    this.returnfareservice.getreturnfare(parseInt(sessionStorage.getItem("return_schedule_id"))).subscribe(f=>{this.returnfares=f
+        sessionStorage.setItem("refare",this.returnfares.economy_class_fare),
+        sessionStorage.setItem("rffare",this.returnfares.first_class_fare),
+        sessionStorage.setItem("rbfare",this.returnfares.business_class_fare),
+        sessionStorage.setItem("rpfare",this.returnfares.premium_class_fare)});
   }
   ngOnInit(): void {
     sessionStorage.setItem("bookreturn",this.bookreturn);
-      // var dvPassport = document.getElementById("returnflights");
-      // dvPassport.style.display =  sessionStorage.getItem("return_date")!='' ? "block" : "none";
   }
 
 }

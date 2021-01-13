@@ -24,6 +24,7 @@ export class UserloginComponent implements OnInit {
   msg:string;
   userlogin:user;
   u:any;
+  date:Date= new Date();
 
   constructor(private userService:userService,private AuthenticationService:AuthenticationService,private EncrDecr:EncrDecrServiceService,private router:Router) { 
     this.user = new user();
@@ -38,7 +39,7 @@ export class UserloginComponent implements OnInit {
       username:new FormControl('',[Validators.required,Validators.email]),
       password:new FormControl('',[Validators.required,Validators.pattern(/^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{8,}$/)]),
       confirm_password:new FormControl('',[Validators.required,Validators.minLength(8)]),
-      dob:new FormControl('',Validators.required),
+      dob:new FormControl('',[Validators.required]),
       phone:new FormControl('',[Validators.required,Validators.minLength(10),Validators.maxLength(15)])
     }, this.pwdMatchValidator);
   }

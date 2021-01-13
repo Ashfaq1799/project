@@ -149,10 +149,10 @@ span{
 }
 .vector img{
     height: 600px;
-    width:700px;
+    width:650px;
 }
 .vector{
-    margin-left:700px;
+    margin-left:900px;
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: white;

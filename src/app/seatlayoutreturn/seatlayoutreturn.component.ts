@@ -11,7 +11,7 @@ export class SeatlayoutreturnComponent implements OnInit {
 
   private seatConfig: any = null;
   public seatmap = [];
-  private fare = 1950;
+  // private fare = 1950;
   
   
   private seatChartConfig = {
@@ -31,6 +31,7 @@ export class SeatlayoutreturnComponent implements OnInit {
   s:number=parseInt(sessionStorage.getItem("return_schedule_id"));
   seat:any;
   msg:any;
+  // returnfares:any;
   title = 'seat-chart-generator';
   count:number;
   constructor(public sl:SeatLayoutService,private router:Router) {
@@ -44,7 +45,7 @@ export class SeatlayoutreturnComponent implements OnInit {
     //Process a simple flight layout
     this.seatConfig = [
       {
-        "seat_price": this.fare+5000,
+        "seat_price": parseInt(sessionStorage.getItem("rpfare")),
         "seat_map": [
           {
             "seat_label": "A",
@@ -70,7 +71,7 @@ export class SeatlayoutreturnComponent implements OnInit {
         ]
       },
       {
-        "seat_price": this.fare+3000,
+        "seat_price": parseInt(sessionStorage.getItem("rbfare")),
         "seat_map": [
          
           {
@@ -93,7 +94,7 @@ export class SeatlayoutreturnComponent implements OnInit {
         ]
       },
       {
-        "seat_price": this.fare+1000,
+        "seat_price": parseInt(sessionStorage.getItem("rffare")),
         "seat_map": [
           {
             "seat_label": "C",
@@ -141,7 +142,7 @@ export class SeatlayoutreturnComponent implements OnInit {
         ]
       },
       {
-        "seat_price": this.fare,
+        "seat_price": parseInt(sessionStorage.getItem("refare")),
         "seat_map": [
           {
             "seat_label": "D",

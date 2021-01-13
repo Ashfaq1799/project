@@ -48,6 +48,9 @@ import { ConfirmedComponent } from './confirmed/confirmed.component';
 import { CancelledComponent } from './cancelled/cancelled.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { FareComponent } from './fare/fare.component';
+import { FareService } from "./services/fare.service";
+import { ReturnfareService } from "./services/returnfare.service";
 
 
 @NgModule({
@@ -78,7 +81,8 @@ import { FooterComponent } from './footer/footer.component';
     ConfirmedComponent,
     CancelledComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FareComponent
   ],
   imports: [
     CommonModule,
@@ -91,7 +95,7 @@ import { FooterComponent } from './footer/footer.component';
     TooltipModule.forRoot()
   ],
   providers: [userService,EncrDecrServiceService,FlightService,SeatLayoutService,FlightsearchService,PassengerService,BookingService,
-  TicketService,ReturnflightsService,ReturnticketService,CancelticketService,BookinghistoryService],
+  TicketService,ReturnflightsService,ReturnticketService,CancelticketService,BookinghistoryService,FareService,ReturnfareService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -40,7 +40,8 @@
                     Password doesn't match
                 </span>
 
-                <input type="date" class="input-field" placeholder="Enter date of birth" id="dob" name="dob" formControlName="dob"/>
+                <input type="date" class="input-field" placeholder="Enter date of birth" id="dob" name="dob" max="date" formControlName="dob"/>
+                <span class="error" *ngIf="dob.input-field.invalid && dob.touched ">Invalid phone number</span>
 
                 <input type="text" class="input-field" placeholder="Enter phone number" id="phone" name ="phone" formControlName="phone"/>
                 <span class="error" *ngIf="phone.invalid && phone.touched">Invalid phone number</span>
@@ -52,7 +53,7 @@
         </div>
         </div>
         <div class="vector">
-            <img src="/assets/images/home.jpg" alt="">
+            <img src="/assets/images/home.png" alt="">
         </div>
     </div>
 

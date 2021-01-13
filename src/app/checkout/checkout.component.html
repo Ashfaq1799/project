@@ -21,20 +21,20 @@
               <span class="error" *ngIf="card_number.invalid && card_number.touched">card number is invalid</span>
   
               <label for="expmonth">Exp Month</label>
-              <input type="number" id="expmonth" name="expmonth" placeholder="Enter Expiry month" formControlName="expiry_month" step="1" min="1" max="12">
-              <span class="error" *ngIf="expiry_month.invalid && expiry_month.touched">expiry month is invalid</span>
+              <input type="number" id="expiry_month" name="expiry_month" placeholder="Enter Expiry month" formControlName="expiry_month" step="1" min="1" max="12">
+              <span class="error" *ngIf="f.expiry_month.hasError('max')|| expiry_month.invalid || f.expiry_month.hasError('min')">expiry month is invalid</span>
   
               <div class="row">
                 <div class="col-50">
                   <label for="expyear">Exp Year</label>
-                  <input type="text" id="expyear" name="exp_year" placeholder="Enter expiry year" formControlName="expiry_year" step="1" min="2021" max="2026">
-                  <span class="error" *ngIf="expiry_year.invalid && expiry_year.touched">expiry year is invalid</span>
+                  <input type="number" id="expiry_year" name="expiry_year" placeholder="Enter expiry year" formControlName="expiry_year" step="1" min="2021" max="2026">
+                  <span class="error" *ngIf="f.expiry_year.hasError('max')|| expiry_year.invalid || f.expiry_year.hasError('min')">expiry year is invalid</span>
   
                 </div>
                 <div class="col-50">
                   <label for="cvv">CVV</label>
                   <input type="text" id="cvv" name="cvv" placeholder="Enter cvv" formControlName="cvv">
-                  <span class="error" *ngIf="cvv.invalid && cvv.touched">cvv is invalid</span>
+                  <span class="error" *ngIf="f.cvv.hasError('minlength') || f.cvv.hasError('minlength') || cvv.invalid">cvv is invalid</span>
   
                 </div>
               </div>

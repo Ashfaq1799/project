@@ -53,8 +53,8 @@ export class CheckoutComponent implements OnInit {
     this.checkoutForm= new FormGroup({
       name:new FormControl('',Validators.required),
       card_number:new FormControl('',[Validators.required,Validators.pattern('[0-9-]*')]),
-      expiry_month:new FormControl('',[Validators.required,Validators.pattern('[0-9]*'),Validators.maxLength(2)]),
-      expiry_year:new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(4)]),
+      expiry_month:new FormControl('',[Validators.required,Validators.pattern('[0-9]*'),Validators.min(1),Validators.max(12)]),
+      expiry_year:new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(4),Validators.min(2021),Validators.max(2026)]),
       cvv:new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(3)])
     });
     // this.booking = new Booking(this.username,this.totalcost,this.schedule_id);
@@ -73,7 +73,9 @@ export class CheckoutComponent implements OnInit {
   get expiry_month(){return this.checkoutForm.get('expiry_month')}
   get expiry_year(){return this.checkoutForm.get('expiry_year')}
   get cvv(){return this.checkoutForm.get('cvv')}
- 
+  get f(){
+    return this.checkoutForm.controls;
+  }
   
   onsubmit(){
     // this.dummy = parseInt(sessionStorage.getItem("return_schedule_id"));

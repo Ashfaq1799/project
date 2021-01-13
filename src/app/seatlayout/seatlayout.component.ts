@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Fare } from '../models/fare.model';
+import { FareService } from '../services/fare.service';
 import { SeatLayoutService } from '../services/seatLayout.service';
 
 @Component({
@@ -31,20 +33,30 @@ export class SeatLayoutComponent implements OnInit {
   s:number=parseInt(sessionStorage.getItem("schedule_id"));
   seat:any;
   msg:any;
+  fares:any;
   count:number;
+  // efare:number;
+  // ffare:number;
+  // bfare:number;
+  // pfare:number;
+
+
   title = 'seat-chart-generator';
   constructor(public sl:SeatLayoutService,private router:Router) {
-    
+    // this.s=parseInt(sessionStorage.getItem("schedule_id"));
+    // this.fareservice.getfare(this.s).subscribe(f=>{this.fares=f
+    // sessionStorage.setItem("efare",this.fares.economy_class_fare),
+    // sessionStorage.setItem("ffare",this.fares.first_class_fare),
+    // sessionStorage.setItem("bfare",this.fares.business_class_fare),
+    // sessionStorage.setItem("pfare",this.fares.premium_class_fare)});
    }
-
-
 
    ngOnInit(): void {
     this.count=parseInt(sessionStorage.getItem("count"));
     //Process a simple flight layout
     this.seatConfig = [
       {
-        "seat_price": this.fare+5000,
+        "seat_price":parseInt(sessionStorage.getItem("pfare")),
         "seat_map": [
           {
             "seat_label": "A",
@@ -70,7 +82,7 @@ export class SeatLayoutComponent implements OnInit {
         ]
       },
       {
-        "seat_price": this.fare+3000,
+        "seat_price": parseInt(sessionStorage.getItem("bfare")),
         "seat_map": [
          
           {
@@ -93,7 +105,7 @@ export class SeatLayoutComponent implements OnInit {
         ]
       },
       {
-        "seat_price": this.fare+1000,
+        "seat_price": parseInt(sessionStorage.getItem("ffare")),
         "seat_map": [
           {
             "seat_label": "C",
@@ -141,7 +153,7 @@ export class SeatLayoutComponent implements OnInit {
         ]
       },
       {
-        "seat_price": this.fare,
+        "seat_price": parseInt(sessionStorage.getItem("efare")),
         "seat_map": [
           {
             "seat_label": "D",
